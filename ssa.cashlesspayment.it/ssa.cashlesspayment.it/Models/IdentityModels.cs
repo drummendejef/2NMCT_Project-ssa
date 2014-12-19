@@ -18,6 +18,8 @@ namespace ssa.cashlesspayment.it.Models
         }
     }
 
+    
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

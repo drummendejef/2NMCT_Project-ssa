@@ -136,7 +136,7 @@ namespace ssa.cashlesspayment.it.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        /*[AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -170,7 +170,7 @@ namespace ssa.cashlesspayment.it.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
-        }
+        }*/
 
         //
         // GET: /Account/ConfirmEmail
