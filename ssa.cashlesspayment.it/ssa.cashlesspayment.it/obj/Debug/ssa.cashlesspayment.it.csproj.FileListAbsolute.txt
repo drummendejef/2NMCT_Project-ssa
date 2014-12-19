@@ -50,7 +50,6 @@ E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\Microsoft.Owin.Security.Google.xml
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\Microsoft.Owin.Security.Twitter.xml
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\obj\Debug\ssa.cashlesspayment.it.csprojResolveAssemblyReference.cache
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\obj\Debug\ssa.cashlesspayment.it.Properties.Resources.resources
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\obj\Debug\ssa.cashlesspayment.it.csproj.GenerateResource.Cache
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\obj\Debug\ssa.cashlesspayment.it.dll
@@ -62,3 +61,4 @@ E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\System.Net.Http.Formatting.xml
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\System.Web.Http.xml
 E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\bin\System.Web.Http.WebHost.xml
+E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\obj\Debug\ssa.cashlesspayment.it.csprojResolveAssemblyReference.cache
