@@ -173,8 +173,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KassaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganisatieController.cs" />
+    <Compile Include="DataAcces\DAKassa.cs" />
     <Compile Include="DataAcces\DAOrganisatie.cs" />
     <Compile Include="DataAcces\Database.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,7 +190,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Organisatie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -262,8 +263,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Organisatie\Register.cshtml" />
+    <Content Include="Views\Kassa\Index.cshtml" />
+    <Content Include="Views\Kassa\Create.cshtml" />
     <Content Include="Views\Organisatie\Index.cshtml" />
+    <Content Include="Views\Organisatie\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +286,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Business Applications\Project\Project_BA_v2\nmct.ba.cashlessproject.ui\nmct.ba.cashlessproject.model\nmct.ba.cashlessproject.model.csproj">
+      <Project>{76dfd653-57e3-417b-bc35-1ab67b3963e6}</Project>
+      <Name>nmct.ba.cashlessproject.model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

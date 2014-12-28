@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ssa.cashlesspayment.it", "ssa.cashlesspayment.it\ssa.cashlesspayment.it.csproj", "{EBFC1763-3D07-45EE-BC1F-4A85C504C9C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ba.cashlessproject.model", "..\..\..\Business Applications\Project\Project_BA_v2\nmct.ba.cashlessproject.ui\nmct.ba.cashlessproject.model\nmct.ba.cashlessproject.model.csproj", "{76DFD653-57E3-417B-BC35-1AB67B3963E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EBFC1763-3D07-45EE-BC1F-4A85C504C9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBFC1763-3D07-45EE-BC1F-4A85C504C9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBFC1763-3D07-45EE-BC1F-4A85C504C9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76DFD653-57E3-417B-BC35-1AB67B3963E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76DFD653-57E3-417B-BC35-1AB67B3963E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76DFD653-57E3-417B-BC35-1AB67B3963E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76DFD653-57E3-417B-BC35-1AB67B3963E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

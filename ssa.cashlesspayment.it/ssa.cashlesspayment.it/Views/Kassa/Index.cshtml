@@ -1,0 +1,51 @@
+﻿@model IEnumerable<nmct.ba.cashlessproject.model.Kassa>
+
+@{
+    ViewBag.Title = "Overzicht Kassa's";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KassaNaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toestel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aankoopdatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vervaldatum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KassaNaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toestel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aankoopdatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vervaldatum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

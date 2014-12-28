@@ -1,9 +1,10 @@
-﻿using ssa.cashlesspayment.it.Models;
+﻿using nmct.ba.cashlessproject.model;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Web;
+
 
 namespace ssa.cashlesspayment.it.DataAcces
 {
@@ -11,7 +12,7 @@ namespace ssa.cashlesspayment.it.DataAcces
     {
         private const string CONNECTIONSTRING = "DefaultConnection";
 
-        //TODO
+
         //Get organisaties
         public static List<Organisatie> GetOrganisaties()
         {
@@ -57,9 +58,12 @@ namespace ssa.cashlesspayment.it.DataAcces
             DbParameter par8 = Database.AddParameter(CONNECTIONSTRING, "@Email", email);
             DbParameter par9 = Database.AddParameter(CONNECTIONSTRING, "@Telefoonnr", telefoonnr);
 
-            Database.InsertData(CONNECTIONSTRING, sql, par1, par2, par3, par4, par5, par6, par7, par8, par9);
-
-            return 0;
+            return Database.InsertData(CONNECTIONSTRING, sql, par1, par2, par3, par4, par5, par6, par7, par8, par9);
         }
+
+
+        //TODO
+        //Update organisaties
+
     }
 }
