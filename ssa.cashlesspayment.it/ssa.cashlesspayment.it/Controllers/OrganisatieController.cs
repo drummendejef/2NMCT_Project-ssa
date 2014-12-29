@@ -37,8 +37,47 @@ namespace ssa.cashlesspayment.it.Controllers
             return RedirectToAction("Index");
         }
 
-        //TODO
+        //Details van een organisatie
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (!id.HasValue)
+                return RedirectToAction("Index");
+
+            Organisatie organisatie = DAOrganisatie.GetOrganisatie(id.Value);
+            if(organisatie == null)
+                return RedirectToAction("Index");
+
+            return View(organisatie);
+        }
+
         //Bewerken
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+                return RedirectToAction("Index");
+
+            Organisatie organisatie = DAOrganisatie.GetOrganisatie(id.Value);
+            if (organisatie == null)
+                return RedirectToAction("Index");
+
+            return View(organisatie);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public ActionResult EditById(string Login, string Password, string DbName, string DbLogin, string DbPassword, string OrganisatieNaam, string Adres, string Email, string Telefoonnr, int Id)
+        {
+            if (Id == null)
+                return RedirectToAction("Index");
+
+            DAOrganisatie.EditOrganisatie(Login, Password, DbName, DbLogin, DbPassword, OrganisatieNaam, Adres, Email, Telefoonnr, Id);            
+
+            return RedirectToAction("Index");
+        }
+
+        //Verwijderen
         [HttpGet]
         public ActionResult Delete(int? id)
         {
@@ -63,6 +102,8 @@ namespace ssa.cashlesspayment.it.Controllers
 
             return RedirectToAction("Index");
         }
+
+
 
 
     }

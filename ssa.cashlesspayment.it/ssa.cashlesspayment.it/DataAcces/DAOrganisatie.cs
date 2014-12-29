@@ -98,6 +98,29 @@ namespace ssa.cashlesspayment.it.DataAcces
             return id;
         }
 
+        //Edit organisatie
+        public static int EditOrganisatie(string Login, string Password, string DbName, string DbLogin, string DbPassword, string OrganisatieNaam, string Adres, string Email, string Telefoonnr, int Id)
+        {
+            string sql = "UPDATE Organisaties SET Login=@Login, Password = @Password, DbName = @DbName, DbLogin = @DbLogin, DbPassword = @DbPassword, OrganisatieNaam = @OrganisatieNaam, Adres = @Adres, Email = @Email, Telefoonnr = @Telefoonnr WHERE ID = @Id";
+
+            DbParameter par1 = Database.AddParameter(CONNECTIONSTRING, "@Login", Login);
+            DbParameter par2 = Database.AddParameter(CONNECTIONSTRING, "@Password", Password);
+            DbParameter par3 = Database.AddParameter(CONNECTIONSTRING, "@DbName", DbName);
+            DbParameter par4 = Database.AddParameter(CONNECTIONSTRING, "@DbLogin", DbLogin);
+            DbParameter par5 = Database.AddParameter(CONNECTIONSTRING, "@DbPassword", Cryptography.Encrypt(DbPassword));
+            DbParameter par6 = Database.AddParameter(CONNECTIONSTRING, "@OrganisatieNaam", OrganisatieNaam);
+            DbParameter par7 = Database.AddParameter(CONNECTIONSTRING, "@Adres", Adres);
+            DbParameter par8 = Database.AddParameter(CONNECTIONSTRING, "@Email", Email);
+            DbParameter par9 = Database.AddParameter(CONNECTIONSTRING, "@Telefoonnr", Telefoonnr);
+            DbParameter par10 = Database.AddParameter(CONNECTIONSTRING, "@Id", Id);
+
+
+
+            int rowsupdated = Database.ModifyData(CONNECTIONSTRING, sql, par1, par2, par3, par4, par5, par6, par7, par8, par9, par10);
+
+            return rowsupdated;
+        }
+
         //Delete organisatie
         public static void DeleteOrganisatie(int Id)
         {
