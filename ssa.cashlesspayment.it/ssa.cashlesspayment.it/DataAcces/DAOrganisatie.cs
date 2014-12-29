@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -44,6 +45,36 @@ namespace ssa.cashlesspayment.it.DataAcces
             return organisaties;
         }
 
+        //Get organisatie bij Id
+        public static Organisatie GetOrganisatie(int id)
+        {
+            string sql = "SELECT * FROM Organisaties WHERE ID=@Id";
+            DbParameter par1 = Database.AddParameter(CONNECTIONSTRING, "@Id", id);
+
+            DbDataReader reader = Database.GetData(CONNECTIONSTRING, sql, par1);
+
+            while (reader.Read())
+            {
+                Organisatie o = new Organisatie()
+                {
+                    Id = int.Parse(reader["ID"].ToString()),
+                    Login = reader["Login"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    DbName = reader["DbName"].ToString(),
+                    DbLogin = reader["DbLogin"].ToString(),
+                    DbPassword = reader["DbPassword"].ToString(),
+                    OrganisatieNaam = reader["OrganisatieNaam"].ToString(),
+                    Adres = reader["Adres"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Telefoonnr = reader["Telefoonnr"].ToString()
+                };
+                reader.Close();
+                return o;
+            }
+
+            return null;
+        }
+
         //Nieuwe organisatie in de database opslaan.
         public static int SaveOrganisatie(string login, string password, string dbname, string dblogin,string dbpassword ,string organisatienaam, string adres, string email, string telefoonnr)
         {
@@ -58,9 +89,71 @@ namespace ssa.cashlesspayment.it.DataAcces
             DbParameter par8 = Database.AddParameter(CONNECTIONSTRING, "@Email", email);
             DbParameter par9 = Database.AddParameter(CONNECTIONSTRING, "@Telefoonnr", telefoonnr);
 
-            return Database.InsertData(CONNECTIONSTRING, sql, par1, par2, par3, par4, par5, par6, par7, par8, par9);
+            int id = Database.InsertData(CONNECTIONSTRING, sql, par1, par2, par3, par4, par5, par6, par7, par8, par9);
+
+            //Oproepen "aanmaken DB" functie
+            GenerateDatabase(login, password, dbname, dblogin, dbpassword, organisatienaam, adres, email, telefoonnr);
+
+            return id;
         }
 
+        //Delete organisatie
+        public static void DeleteOrganisatie(int Id)
+        {
+            string sql = "DELETE FROM Organisaties WHERE ID=@Id";
+            DbParameter par1 = Database.AddParameter(CONNECTIONSTRING, "@Id", Id);
+
+            Database.ModifyData(CONNECTIONSTRING, sql, par1);
+        }
+
+        //Persoonlijke database genereren
+        public static void GenerateDatabase(string login, string password, string dbname, string dblogin, string dbpassword, string organisatienaam, string adres, string email, string telefoonnr)
+        {
+            //Database aanmaken
+            //string create = File.ReadAllText(HostingEnvironment.MapPath(@"~/App_Data/create.txt")); only for the web
+            //string create = File.ReadAllText(@"..\..\Data\create.txt");//Voor de desktop
+            string create = File.ReadAllText(@"E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\Data\create.txt");//Voor de desktop
+            string sql = create.Replace("@@DbName", dbname).Replace("@@DbLogin", dblogin).Replace("@@DbPassword", dbpassword);
+
+            //overlopen
+            foreach(string commandText in RemoveGo(sql))
+            {
+                Database.ModifyData(CONNECTIONSTRING, commandText);
+            }
+
+            //Login, gebruiker en tabellen aanmaken
+            DbTransaction trans = null;
+            try
+            {
+                trans = Database.BeginTransaction(CONNECTIONSTRING);
+
+                //string fill = File.ReadAllText(HostingEnvironment.MapPath(@"~/App_Data/fill.txt")); // only for the web
+                //string fill = File.ReadAllText(@"..\Data\fill.txt");//Voor desktop
+                string fill = File.ReadAllText(@"E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\Data\fill.txt");//Voor desktop
+                string sql2 = fill.Replace("@@DbName", dbname).Replace("@@DbLogin", dblogin).Replace("@@DbPassword", dbpassword);
+
+                foreach(string commandText in RemoveGo(sql2))
+                {
+                    Database.ModifyData(trans, commandText);
+                }
+
+                trans.Commit();
+            }
+            catch(Exception ex)
+            {
+                trans.Rollback();
+                Console.WriteLine(ex.Message);
+            }
+        }
+        
+        //Gebruikt om de file te lezen
+        private static string[] RemoveGo(string input)
+        {
+            //split the script on "GO" commands
+            string[] splitter = new string[] { "\r\nGO\r\n" };
+            string[] commandTexts = input.Split(splitter, StringSplitOptions.RemoveEmptyEntries);
+            return commandTexts;
+        }
 
         //TODO
         //Update organisaties

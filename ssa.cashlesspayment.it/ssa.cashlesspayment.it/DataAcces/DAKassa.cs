@@ -38,7 +38,7 @@ namespace ssa.cashlesspayment.it.DataAcces
             return kassas;
         }
 
-        //Nieuwe kassa in de database opslaan.
+        //Nieuwe kassa in de database opslaan.E:\School\2014-2015\Server Side Applications\Project-ssa\ssa.cashlesspayment.it\ssa.cashlesspayment.it\Data\create.txt
         public static int SaveKassa(string kassanaam, string toestel, string aankoopdatum, string vervaldatum)
         {
             string sql = "INSERT INTO Kassa VALUES(@KassaNaam, @Toestel, @Aankoopdatum, @Vervaldatum)";
