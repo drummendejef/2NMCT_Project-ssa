@@ -179,8 +179,5 @@ namespace ssa.cashlesspayment.it.DataAcces
             return commandTexts;
         }
 
-        //TODO
-        //Update organisaties
-
     }
 }
