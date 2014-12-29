@@ -1,4 +1,5 @@
 ﻿using nmct.ba.cashlessproject.model;
+using nmct.ba.cashlessproject.model.Encryptie;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -32,7 +33,7 @@ namespace ssa.cashlesspayment.it.DataAcces
                     Password = reader["Password"].ToString(),
                     DbName = reader["DbName"].ToString(),
                     DbLogin = reader["DbLogin"].ToString(),
-                    DbPassword = reader["DbPassword"].ToString(),
+                    DbPassword = Cryptography.Decrypt(reader["DbPassword"].ToString()),
                     OrganisatieNaam = reader["OrganisatieNaam"].ToString(),
                     Adres = reader["Adres"].ToString(),
                     Email = reader["Email"].ToString(),
@@ -62,7 +63,7 @@ namespace ssa.cashlesspayment.it.DataAcces
                     Password = reader["Password"].ToString(),
                     DbName = reader["DbName"].ToString(),
                     DbLogin = reader["DbLogin"].ToString(),
-                    DbPassword = reader["DbPassword"].ToString(),
+                    DbPassword = Cryptography.Decrypt(reader["DbPassword"].ToString()),
                     OrganisatieNaam = reader["OrganisatieNaam"].ToString(),
                     Adres = reader["Adres"].ToString(),
                     Email = reader["Email"].ToString(),
@@ -83,7 +84,7 @@ namespace ssa.cashlesspayment.it.DataAcces
             DbParameter par2 = Database.AddParameter(CONNECTIONSTRING, "@Password", password);
             DbParameter par3 = Database.AddParameter(CONNECTIONSTRING, "@DbName", dbname);
             DbParameter par4 = Database.AddParameter(CONNECTIONSTRING, "@DbLogin", dblogin);
-            DbParameter par5 = Database.AddParameter(CONNECTIONSTRING, "@DbPassword", dbpassword);
+            DbParameter par5 = Database.AddParameter(CONNECTIONSTRING, "@DbPassword", Cryptography.Encrypt(dbpassword));
             DbParameter par6 = Database.AddParameter(CONNECTIONSTRING, "@OrganisatieNaam", organisatienaam);
             DbParameter par7 = Database.AddParameter(CONNECTIONSTRING, "@Adres", adres);
             DbParameter par8 = Database.AddParameter(CONNECTIONSTRING, "@Email", email);
@@ -93,7 +94,7 @@ namespace ssa.cashlesspayment.it.DataAcces
 
             //Oproepen "aanmaken DB" functie
             GenerateDatabase(login, password, dbname, dblogin, dbpassword, organisatienaam, adres, email, telefoonnr);
-
+          
             return id;
         }
 
